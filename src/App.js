@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
 import './App.css';
 import BagelContainer from './components/BagelContainer'
 import FavoritesContainer from './components/FavoritesContainer';
+import NavBar from './NavBar'
 
 
 class App extends Component {
@@ -30,11 +32,25 @@ class App extends Component {
 
   render(){
   return (
+  <Router>
     <div className="App">
-      <FavoritesContainer favorites={this.state.favorites} action={this.removeFromFavorites} />
+      <h1>This is the Bagels app</h1>
+      <NavBar/>
+      <Switch>
+        <Route path='/favorites'>
+          <FavoritesContainer favorites={this.state.favorites} action={this.removeFromFavorites} />
+      </Route>
+      
+     
+      <Route path='/'>
       <h1>Bagels Container</h1>
       <BagelContainer bagels={this.state.bagels} action={this.addToFavorites}/>
+      </Route>
+      </Switch>
+      
+      
     </div>
+  </Router>
   );
   }
 }
