@@ -31,21 +31,12 @@ class App extends Component {
 
   render(){
   return (
-    <Router>
     <div className="App">
       <h1>This is the Bagels App</h1>
-      <li>
-              <Link to="/favorites">Favorites</Link>
-      </li>
-      <Switch>
-        <Route path="/favorites">
           <FavoritesContainer favorites={this.state.favorites} action={this.removeFromFavorites}/>
-        </Route>
-      </Switch>
-        <h1>Bagels Container</h1>
+        <h2>Bagels Container</h2>
          <BagelContainer bagels={this.state.bagels} action={this.addToFavorites}/>
     </div>
-    </Router>
   );
   }
 }
